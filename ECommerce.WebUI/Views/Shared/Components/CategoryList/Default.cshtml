@@ -1,0 +1,34 @@
+﻿@model CategoryListViewModel
+<section class="list-group">
+
+   
+    
+    @{
+        int size = 0;
+        var csss = "list-group-item";
+        @if(size == Model.CurrentCategory)
+        {
+            csss += "active";
+        }
+    }
+        <a href="/product/index?category=@size" style="cursor:pointer;"
+           class="@csss">
+            AllCategory
+        </a>
+
+
+    @foreach (var item in Model.Categories)
+    {
+        var css = "list-group-item";
+        @if (item.CategoryId == Model.CurrentCategory)
+        {
+            css += " active";
+        }
+       <div>
+            <a href="/product/index?category=@item.CategoryId" style="cursor:pointer;"
+               class="@css">
+                @item.CategoryName
+            </a>
+       </div>
+    }
+</section>
